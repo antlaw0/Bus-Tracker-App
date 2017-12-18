@@ -14,7 +14,7 @@ console.log('test')
 		var dataArray=new_message.split(";")
 		//usefirst element in array to get the proper button
 		var button = document.getElementById(dataArray[0])
-		button.innerHTML=dataArray[1]
+		button.value=dataArray[1]
     })
 
 function changeStatus(busName){
@@ -33,5 +33,5 @@ function changeStatus(busName){
 	text=busName+";"+busButton.value
 	
 	//emit name of bus and updated status
-	socket.emit("new_status", text);
+	socket.emit("new_message", text);
 }

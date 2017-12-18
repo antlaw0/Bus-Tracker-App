@@ -30,7 +30,7 @@ def home_page():
 	return render_template("index.html", buses=buses)
 
 
-@socketio.on('new_status')
+@socketio.on('new_message')
 def handle_new_message(message):
     print("New message recieved: ", message)
 	

@@ -1,18 +1,32 @@
-<title> Party Game Chat</title>
+<title> Bus Tracker</title>
 <center>
-<h2>Party Game Chat</h2>
-
-<div>
-  Enter message: <input id="new_message_text" maxlength="200">
-  <button id="send_new_message">Send</button>
-  <button id="clear_message_list_button">clear messages</button>
-</div>
-
-<div>
-  <ul id="message_list">
-</div>
+<h2>Bus Tracker</h2>
 </center>
 
+<table>
+	<tr>
+	<th>
+		Name
+		
+	</th>
+	<th>
+	Status
+	</th>
+	</tr>
+	{% for bus in buses %}
+	<tr>
+	<td>
+	{{bus.name}}
+	</td>
+	<td>
+	{{bus.status}}
+	</td>
+	<td>
+	<input type="button" id={{bus.name}} onclick="changeStatus(this.id)" value={{bus.status}}></input>
+	</td>
+	</tr>
+	{% endfor %}
+</table>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>

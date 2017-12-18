@@ -1,32 +1,37 @@
   var socket = io.connect('https://agile-sea-57808.herokuapp.com')
 //var socket = io.connect('https://localhost:5000')
-
+console.log('test')
   socket.on('connect', function() {
             socket.emit('hello', {data: 'I\'m connected!'});
     });
 
 
-    var input = document.getElementById("new_message_text");
-    var button = document.getElementById("send_new_message");
-    var clearButton = document.getElementById("clear_message_list_button")
-	var message_list = document.getElementById("message_list");
-
-    button.addEventListener("click", function() {
-      var text = input.value;
-      socket.emit("new_message", text);
-    })
-
+    
+    
 
     socket.on("new_message_received", function(new_message){
-      // add message to message_list
-      var li = document.createElement("li");
-      li.innerHTML = new_message;
-      message_list.append(li);
-
+		//split new_message at ;, returns array with bus name and new status
+		var dataArray=new_message.split(";")
+		//usefirst element in array to get the proper button
+		var button = document.getElementById(dataArray[0])
+		button.innerHTML=dataArray[1]
     })
 
-	clearButton.addEventListener("click", function(){
-	message_list.innerHTML=""
+function changeStatus(busName){
+	console.log(busName)
+	var busButton=document.getElementById(busName)
 	
-})
-
+	if (busButton.value == "unarrived"){
+		busButton.value="arrived"
+	}
+	else if (busButton.value == "arrived"){
+		busButton.value="departed"
+	}
+	else {
+		busButton.value="unarrived"
+	}
+	text=busName+";"+busButton.value
+	
+	//emit name of bus and updated status
+	socket.emit("new_status", text);
+}

@@ -11,7 +11,7 @@ db = SQLAlchemy(app)
 import models
 
 #db.drop_all()
-db.create_all()
+#db.create_all()
 
 socketio = SocketIO(app)
 

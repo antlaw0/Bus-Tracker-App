@@ -12,3 +12,4 @@ Werkzeug==0.12.2
 wheel==0.24.0
 eventlet==0.21.0
 Flask-SQLAlchemy==2.1
+psycopg2==2.6.1

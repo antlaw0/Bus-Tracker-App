@@ -1,5 +1,9 @@
 <DOCTYPEHTML>
 <title>Bus Tracker Admin View</title>
+
+<link rel='stylesheet' href='/static/style.css' />
+
+
 <h1><center>Bus Tracker Admin View</center></title>
 <br>
 {% for message in messages %}
@@ -9,9 +13,14 @@
 Bus List
 <br>
 <table>
+	<tr>
+		<th>Name</th>
+		<th>Status</th>
+		<th>Delete</th>
+	</tr>
 	{% for bus in buses %}
 		<tr>
-			<td>
+			<td style="width: 500px;">
 				{{bus.busName}}
 			</td>
 			<td>

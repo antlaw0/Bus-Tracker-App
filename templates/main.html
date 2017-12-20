@@ -1,7 +1,9 @@
 <title> Bus Tracker</title>
+
+<link rel='stylesheet' href='/static/style.css' />
+
 <center>
 <h2>Bus Tracker</h2>
-</center>
 
 <table>
 	<tr>
@@ -15,7 +17,7 @@
 	</tr>
 	{% for bus in buses %}
 	<tr>
-	<td>
+	<td style="width: 500px;" >
 	{{bus.busName}}
 	</td>
 	
@@ -26,6 +28,9 @@
 	</tr>
 	{% endfor %}
 </table>
+ </center>
+
+ 
  <script 
  src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

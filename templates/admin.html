@@ -1,0 +1,30 @@
+<DOCTYPEHTML>
+<title>Bus Tracker Admin View</title>
+<h1><center>Bus Tracker Admin View</center></title>
+<br>
+<table>
+	{% for bus in buses %}
+		<tr>
+			<td>
+				{{bus.busName}}
+			</td>
+			<td>
+				{{bus.busStatus}}
+			</td>
+			<td>
+				<form method="POST" action="">
+					<input type="hidden" name="busToDelete" value="{{bus.busName}}"></input>
+					<input type="submit" value="Delete"></input>
+				</form>
+			</td>
+		</tr>
+	
+	{% endfor %}
+</table>
+<br>
+<form method="POST" action="">
+	<input type="text" name="newBus"></input>
+	<input type="submit" id="submit" name="submit" value="ADD"></input>
+
+</form>
+</html>

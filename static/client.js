@@ -34,4 +34,22 @@ function changeStatus(busName){
 	
 	//emit name of bus and updated status
 	socket.emit("new_message", text);
-}
+	
+	//make AJAX call to update database with status of bus
+	$.ajax( {
+    url: "/updateDatabase",
+    method: "POST",
+    data: { busString : text }
+  }).done(function(data){
+    // data returned here
+    console.log(data);
+    
+  }).fail(function(err){
+    // deal with errors here
+	console.log("AJAX to update database failed.")
+  })
+
+
+}//end of changeStatus
+
+

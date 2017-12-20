@@ -1,20 +1,21 @@
 from app import db
+import Bus
 
-#User accounts table
-class User(db.Model):
+#Bus  table
+class Bus(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	username = db.Column(db.String(80))
-	email = db.Column(db.String(120), unique=True)
-	password = db.Column(db.String(80))
-	status = db.Column(db.String(200)) #stores info about state of game
-	character1 = db.Column(db.String(10000))
-	character2 = db.Column(db.String(10000))
-    
-	def __init__(self, email, username,password):
-		self.username = username
-		self.email = email
-		self.password=password
-		self.status=""
-		#init status string
-		for i in range(100):
-			self.status+="0;"
+	busName = db.Column(db.String(80))
+	busStatus = db.Column(db.String(80))
+	
+	def __init__(self, busName, busStatus):
+		self.busName=busName
+		self.busStatus=busStatus
+		
+def getAllBuses():
+	buses=[]
+	rs=Bus.query.all()
+	for i in rs:
+		bus=Bus(i.busName, i.busStatus)
+		buses.append(bus)
+	return buses
+	

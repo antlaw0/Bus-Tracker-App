@@ -16,19 +16,17 @@
 	{% for bus in buses %}
 	<tr>
 	<td>
-	{{bus.name}}
+	{{bus.busName}}
 	</td>
+	
+	
 	<td>
-	{{bus.status}}
-	</td>
-	<td>
-	<input type="button" id={{bus.name}} onclick="changeStatus(this.id)" value={{bus.status}}></input>
+	<input type="button" id={{bus.busName}} onclick="changeStatus(this.id)" value={{bus.busStatus}}></input>
 	</td>
 	</tr>
 	{% endfor %}
 </table>
-
-
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>      
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 <script type="text/javascript" charset="utf-8"></script>
 <script src="{{ url_for('static', filename='client.js') }}"></script>

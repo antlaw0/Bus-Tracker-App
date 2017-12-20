@@ -52,6 +52,7 @@ def updateDatabase():
 	busString = busString.split(";")
 	busName = busString[0]
 	busStatus = busString[1]
+	print("INFO: "+busName+" "+busStatus)
 	b=models.Bus.query.filter_by(busName=busName).first()
 	b.busStatus=busStatus
 	db.session.add(b)

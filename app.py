@@ -21,6 +21,8 @@ socketio = SocketIO(app)
 @app.route('/', methods=['POST','GET'])		
 def home_page():
 	messages=[]
+	if 'access' in session:
+		return render_template('main.html', buses=models.getAllBuses())
 	if 'password' in request.form:
 		i=models.Info.query.filter_by(id=1).first()
 		#if submitted password matches password in database
@@ -28,6 +30,7 @@ def home_page():
 			return render_template('main.html',buses=models.getAllBuses())
 		else:
 			messages.append("Incorrect password. Please try again.")
+	session['access']='true'
 	return render_template('index.html', messages=messages)
 	
 @socketio.on('new_message')
@@ -40,6 +43,10 @@ def handle_new_message(message):
 @app.route('/admin', methods=['POST','GET'])
 def admin():
 	messages=[]
+	if 'access' not in session:
+		messages.append("Please log in to continue.")
+		print("access not in session")
+		return render_template('index.html', messages=messages)
 	if request.method=='POST':
 		
 		if 'newPassword' in request.form:

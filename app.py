@@ -46,7 +46,7 @@ def admin():
 	buses=models.getAllBuses()		
 	return render_template('admin.html', buses=buses)
 	
-@app.route('/updateDatabase', methods=['POST'])
+@app.route('/updateDatabase', methods=['POST','GET'])
 def updateDatabase():
 	busString=request.form['busString']
 	busString = busString.split(";")

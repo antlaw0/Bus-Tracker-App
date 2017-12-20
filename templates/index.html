@@ -1,36 +1,16 @@
-<title> Bus Tracker</title>
+<DOCTYPEHTML>
+<title>Bus Tracker</title>
+<h1><center>Bus Tracker</center></h1>
+<br>
 <center>
-<h2>Bus Tracker</h2>
-</center>
-
-<table>
-	<tr>
-	<th>
-		Name
-		
-	</th>
-	<th>
-	Status
-	</th>
-	</tr>
-	{% for bus in buses %}
-	<tr>
-	<td>
-	{{bus.busName}}
-	</td>
-	
-	
-	<td>
-	<input type="button" id="{{bus.busName}}" onclick="changeStatus(this.id)" value={{bus.busStatus}}></input>
-	</td>
-	</tr>
+Welcome to Bus Tracker. Please enter the password to continue.
+	<br>
+	{% for message in messages %}
+		{{message}}
 	{% endfor %}
-</table>
- <script 
- src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-        
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-<script type="text/javascript" charset="utf-8"></script>
-<script src="{{ url_for('static', filename='client.js') }}"></script>
+	<form method='POST' action="">
+		<input type='password' id='password' name='password'></input>
+		<input type='submit' id='submit' value='submit'></input>
+	</form>
+</center>
+</html>

@@ -10,6 +10,13 @@ class Bus(db.Model):
 	def __init__(self, busName, busStatus):
 		self.busName=busName
 		self.busStatus=busStatus
+
+class Info(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	password = db.Column(db.String(80))
+	
+	def __init__(self, password):
+		self.password=password
 		
 def getAllBuses():
 	buses=[]

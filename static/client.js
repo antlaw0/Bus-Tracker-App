@@ -27,6 +27,14 @@ function changeStatus(busName){
 	else if (busButton.value == "arrived"){
 		busButton.value="departed"
 	}
+	else if (busButton.value == "departed"){
+		busButton.value="late"
+	}
+	else if (busButton.value == "late"){
+		busButton.value="unarrived"
+	}
+	
+	
 	else {
 		busButton.value="unarrived"
 	}
